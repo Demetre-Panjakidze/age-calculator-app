@@ -1,0 +1,123 @@
+// Colors
+// Primary
+$purple: hsl(259, 100%, 65%);
+$light-red: hsl(0, 100%, 67%);
+
+// Neutral
+$white: hsl(0, 0%, 100%);
+$off-white: hsl(0, 0%, 94%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+nb-layout-column {
+  background-color: $off-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  nb-card {
+    max-width: 100%;
+    padding: 48px 24px;
+    border-radius: 24px 24px 100px;
+
+    form {
+      display: flex;
+      gap: 10px;
+
+      .input-div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        max-width: calc((100% - 40px) / 3);
+
+        label {
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 3px;
+          color: $smokey-grey;
+        }
+
+        input {
+          padding: 12px 16px;
+          border-radius: 8px;
+          border: 1px solid $light-grey;
+          font-weight: 900;
+        }
+      }
+    }
+
+    .hr-container {
+      position: relative;
+
+      hr {
+        margin-block: 55px;
+        height: 2px;
+        background-color: $light-grey;
+        border: 0;
+      }
+
+      .hr-arrow {
+        position: absolute;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: $purple;
+        background-image: url(../assets/images/icon-arrow.svg);
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          transition: background-color 0.3s;
+          background-color: $off-black;
+        }
+      }
+    }
+
+    .content {
+      h2 {
+        font-size: 48px;
+        font-weight: 900;
+
+        span {
+          color: $purple;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  nb-layout-column {
+    nb-card {
+      max-width: 550px;
+      padding: 48px;
+
+      .hr-container {
+        .hr-arrow {
+          left: 100%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        h2 {
+          font-size: 60px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
