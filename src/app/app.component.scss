@@ -44,6 +44,15 @@ nb-layout-column {
           border-radius: 8px;
           border: 1px solid $light-grey;
           font-weight: 900;
+
+          &:focus {
+            outline-color: $purple;
+          }
+        }
+
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+          -webkit-appearance: none;
         }
       }
     }
@@ -59,6 +68,7 @@ nb-layout-column {
       }
 
       .hr-arrow {
+        border: none;
         position: absolute;
         top: 25px;
         left: 50%;
@@ -100,6 +110,14 @@ nb-layout-column {
     nb-card {
       max-width: 550px;
       padding: 48px;
+
+      form {
+        .input-div {
+          input {
+            padding: 16px 24px;
+          }
+        }
+      }
 
       .hr-container {
         .hr-arrow {

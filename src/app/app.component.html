@@ -1,23 +1,92 @@
 <nb-layout>
   <nb-layout-column>
     <nb-card>
-      <form action="">
+      <form [formGroup]="form">
         <div class="day input-div">
           <label for="day">day</label>
-          <input matInput type="number" id="day" />
+          <input matInput type="number" id="day" formControlName="day" />
+          <ng-container *ngIf="form.controls.day.errors">
+            <mat-error
+              *ngIf="
+                form.controls.day.errors['required'] &&
+                form.controls.day.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              This field is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.controls.day.errors['dayNumberRange'] &&
+                form.controls.day.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              Must be a valid day
+            </mat-error>
+            <!-- <mat-error
+              *ngIf="
+                form.controls.day.errors['invalidDate'] &&
+                form.controls.day.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              Must be a valid day
+            </mat-error> -->
+          </ng-container>
         </div>
         <div class="month input-div">
           <label for="month">month</label>
-          <input matInput type="number" id="month" />
+          <input matInput type="number" id="month" formControlName="month" />
+          <ng-container *ngIf="form.controls.month.errors">
+            <mat-error
+              *ngIf="
+                form.controls.month.errors['required'] &&
+                form.controls.month.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              This field is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.controls.month.errors['monthNumberRange'] &&
+                form.controls.month.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              Must be a valid month
+            </mat-error>
+          </ng-container>
         </div>
         <div class="year input-div">
           <label for="year">year</label>
-          <input matInput type="number" id="year" />
+          <input matInput type="number" id="year" formControlName="year" />
+          <ng-container *ngIf="form.controls.year.errors">
+            <mat-error
+              *ngIf="
+                form.controls.year.errors['required'] &&
+                form.controls.year.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              This field is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.controls.year.errors['yearNumberRange'] &&
+                form.controls.year.touched
+              "
+              [ngStyle]="{ fontStyle: 'italic' }"
+            >
+              Must be a valid year
+            </mat-error>
+          </ng-container>
         </div>
       </form>
       <div class="hr-container">
         <hr />
-        <div class="hr-arrow" (click)="handleClick()"></div>
+        <button class="hr-arrow" (click)="handleClick()"></button>
       </div>
       <div class="content">
         <h2 class="h2-year">
