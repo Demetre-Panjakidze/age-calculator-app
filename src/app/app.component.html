@@ -3,7 +3,7 @@
     <nb-card>
       <form [formGroup]="form">
         <div class="day input-div">
-          <label for="day">day</label>
+          <label for="day" [ngStyle]="{ color: textColor('day') }">day</label>
           <input matInput type="number" id="day" formControlName="day" />
           <ng-container *ngIf="form.controls.day.errors">
             <mat-error
@@ -24,19 +24,12 @@
             >
               Must be a valid day
             </mat-error>
-            <!-- <mat-error
-              *ngIf="
-                form.controls.day.errors['invalidDate'] &&
-                form.controls.day.touched
-              "
-              [ngStyle]="{ fontStyle: 'italic' }"
-            >
-              Must be a valid day
-            </mat-error> -->
           </ng-container>
         </div>
         <div class="month input-div">
-          <label for="month">month</label>
+          <label for="month" [ngStyle]="{ color: textColor('month') }"
+            >month</label
+          >
           <input matInput type="number" id="month" formControlName="month" />
           <ng-container *ngIf="form.controls.month.errors">
             <mat-error
@@ -60,7 +53,9 @@
           </ng-container>
         </div>
         <div class="year input-div">
-          <label for="year">year</label>
+          <label for="year" [ngStyle]="{ color: textColor('year') }"
+            >year</label
+          >
           <input matInput type="number" id="year" formControlName="year" />
           <ng-container *ngIf="form.controls.year.errors">
             <mat-error
@@ -89,14 +84,14 @@
         <button class="hr-arrow" (click)="handleClick()"></button>
       </div>
       <div class="content">
-        <h2 class="h2-year">
-          <span class="date-amount year-amount">{{ yearAmount }}</span> years
+        <h2>
+          <span>{{ yearAmount }}</span> years
         </h2>
-        <h2 class="h2-month">
-          <span class="date-amount month-amount">{{ monthAmount }}</span> months
+        <h2>
+          <span>{{ monthAmount }}</span> months
         </h2>
-        <h2 class="h2-day">
-          <span class="date-amount day-amount">{{ dayAmount }}</span> days
+        <h2>
+          <span>{{ dayAmount }}</span> days
         </h2>
       </div>
     </nb-card>

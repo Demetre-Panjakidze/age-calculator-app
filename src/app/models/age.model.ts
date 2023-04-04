@@ -4,4 +4,5 @@ export interface AgeForm {
   day: FormControl<number | null>;
   month: FormControl<number | null>;
   year: FormControl<number | null>;
+  [key: string]: FormControl;
 }

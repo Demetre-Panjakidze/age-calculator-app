@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AgeForm } from './models/age.model';
 import { dayNumberRangeValidator } from './validators/day-amount.validator';
 import { monthNumberRangeValidator } from './validators/month-amount.validator';
 import { yearNumberRangeValidator } from './validators/year-amount.validator';
-import { invalidDateValidator } from './validators/invalid-date.validator';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +12,10 @@ import { DatePipe } from '@angular/common';
 })
 export class AppComponent {
   form: FormGroup<AgeForm> = this.buildForm();
+  ageDate: Date | undefined;
   yearAmount: string | number | undefined = '- -';
   monthAmount: string | number | undefined = '- -';
   dayAmount: string | number | undefined = '- -';
-  ageDate: Date | undefined;
 
   constructor(private fb: FormBuilder) {}
 
@@ -52,11 +50,7 @@ export class AppComponent {
   buildForm() {
     return new FormGroup<AgeForm>({
       day: this.fb.control(null, {
-        validators: [
-          Validators.required,
-          dayNumberRangeValidator(),
-          // invalidDateValidator(),
-        ],
+        validators: [Validators.required, dayNumberRangeValidator()],
         updateOn: 'blur',
       }),
       month: this.fb.control(null, {
@@ -68,5 +62,15 @@ export class AppComponent {
         updateOn: 'blur',
       }),
     });
+  }
+
+  textColor(controlName: string) {
+    if (
+      this.form.controls[controlName].invalid &&
+      this.form.controls[controlName].touched
+    ) {
+      return 'hsl(0, 100%, 67%)';
+    }
+    return 'hsl(0, 0%, 8%)';
   }
 }
